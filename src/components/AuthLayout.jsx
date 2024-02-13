@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Protected = () => {
+const Protected = ({children, authentication = true}) => {
   return (
-    <div>Protected</div>
+   <>{children}</>
   )
 }
 
