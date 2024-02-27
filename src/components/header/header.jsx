@@ -1,10 +1,10 @@
 import React from 'react'
-import { Container } from "../container/Container"
-import { Logo } from '../Logo'
+import Container from "../container/Container"
+import Logo from '../Logo'
 import { Link } from 'react-router-dom'
 import LogoutBtn from './LogoutBtn'
 import { useNavigate } from 'react-router-dom'
-import { UseSelector, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 function header() {
   const authStatus = useSelector((state) => state.auth.status);
@@ -32,8 +32,8 @@ function header() {
       active: authStatus,
     },
     {
-      name: "Add Posts",
-      slug: 'add-posts',
+      name: "Add Post",
+      slug: 'add-post',
       active: authStatus,
     },
   ]

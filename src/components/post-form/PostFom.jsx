@@ -7,6 +7,7 @@ import Select from '../Select'
 import appwriteService from '../../appwrite/config'
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import React from 'react';
 
 export default function PostForm({post}){
     const {register,handleSubmit,watch,setValue,control,getValues} = useForm({
@@ -37,11 +38,15 @@ export default function PostForm({post}){
                 navigate(`/post/${dbPost.$id}`)
             }
         } else {
-            const file = await appwriteService.uploadFile(data.image[0]);
-            if(file) {
-                const fileId = file.$id;
-                data.featuredImage = fileId;
-            }
+            // const file = await appwriteService.uploadFile(data.image[0]);
+            // if(file) {
+                // const fileId = file.$id;
+                // data.featuredImage = fileId;
+                const dbPost = await appwriteService.createPost({...data, userId: userData.$id});
+                if(dbPost) {
+                    navigate(`/post/${dbPost.$id}`)
+                }
+            // }
         }
     }
 
@@ -85,19 +90,19 @@ export default function PostForm({post}){
                 />
             </div>
             <div className="w-1/3 px-2">
-                <Input
+                {/* <Input
                 label="Featured Image"
                 type="file"
                 className="mb-4"
                 accept="image/png, image/jpg, image/jpeg"
                 {...register("image", {required: !post})}
-                />
+                /> */}
 
                 {post && (
                     <div className="w-full mb-4">
-                        <img src={appwriteService.getFilePreview(post.featuredImage)} alt={post.title}
+                        {/* <img src={appwriteService.getFilePreview(post.featuredImage)} alt={post.title}
                         className="rouded-lg"
-                        />
+                        /> */}
                     </div>
                 )}
 

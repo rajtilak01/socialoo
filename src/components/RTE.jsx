@@ -16,6 +16,8 @@ function RTE({
         control={control}
         render={({field: {onChange}}) => (
             <Editor
+            // apiKey={import.meta.env.TINY_MCE_API_KEY}
+            apiKey='7sv5lw8nmzfllmmetwf128p1c8h1l6gyo74tq1l8n9fj8tdg'
             initialValue={defaultValue}
             init={{
                 branding: false,
